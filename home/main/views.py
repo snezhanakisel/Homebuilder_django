@@ -1,11 +1,13 @@
 from django.shortcuts import render
-from .models import Carusel
+from .models import Carusel, Category, Mission
 
 # Create your views here.
 
 
 def index(request):
     carusel = Carusel.objects.all()
+    cat = Category.objects.all()
+    mission = Mission.objects.all()
     data = {
         'carusels': carusel,
         'construction': 'Construction',
@@ -17,6 +19,8 @@ def index(request):
         'work': 'High Quality Work',
         'help': '24/7 Help Support',
         'content': 'Separated they live in. A small river named Duden flows.',
+        'cats': cat,
+        'missions': mission,
 
     }
     return render(request, 'main/index.html', data)
