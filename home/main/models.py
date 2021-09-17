@@ -19,3 +19,10 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = "Категории"
+
+class Mission(models.Model):
+    text = models.CharField('Содержание', max_length=150)
+    cat = models.ForeignKey('Category', on_delete=models.CASCADE, verbose_name='Категория')
+
+    def __str__(self):
+        return self.text
