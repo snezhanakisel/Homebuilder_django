@@ -8,3 +8,14 @@ class Carusel(models.Model):
 
     def __str__(self):
         return self.title
+
+class Category(models.Model):
+    name = models.CharField('Категория', max_length=20)
+    slug = models.SlugField('URL', max_length=25)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Категория'
+        verbose_name_plural = "Категории"
