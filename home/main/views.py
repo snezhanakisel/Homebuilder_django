@@ -4,19 +4,20 @@ from project.models import *
 
 # Create your views here.
 
+menu = {
+    'Home': 'home',
+    'About': 'about',
+    'Our team': 'team',
+    'Project': 'project',
+    'Blog': 'blog',
+    'Contact': 'contact'
+}
+
 
 def index(request):
     carusel = Carusel.objects.all()
     cat = Category.objects.all()
     mission = Mission.objects.all()
-    menu = {
-        'Home': 'home',
-        'About': 'about',
-        'Our team': 'team',
-        'Project': 'project',
-        'Blog': 'blog',
-        'Contact': 'contact'
-    }
 
     data = {
         'carusels': carusel,
@@ -33,28 +34,24 @@ def index(request):
         'missions': mission,
         'menu': menu
 
-
     }
     return render(request, 'main/index.html', data)
 
 
 def project(request):
     order = Project.objects.all()
+
+
     data1 = {
-        'orders': order
+        'orders': order,
+        'menu':menu
     }
+
     return render(request, 'main/project.html', data1)
 
 
 def about(request):
-    menu = {
-        'Home': 'home',
-        'About': 'about',
-        'Our team': 'team',
-        'Project': 'project',
-        'Blog': 'blog',
-        'Contact': 'contact'
-    }
+
     data = {
         'menu': menu
     }
