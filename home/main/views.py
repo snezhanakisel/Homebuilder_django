@@ -47,4 +47,15 @@ def project(request):
 
 
 def about(request):
-    return render(request, 'main/about.html')
+    menu = {
+        'Home': 'home',
+        'About': 'about',
+        'Our team': 'team',
+        'Project': 'project',
+        'Blog': 'blog',
+        'Contact': 'contact'
+    }
+    data = {
+        'menu': menu
+    }
+    return render(request, 'main/about.html', data)
