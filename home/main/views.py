@@ -40,13 +40,10 @@ def index(request):
 
 def project(request):
     order = Project.objects.all()
-
-
     data1 = {
         'orders': order,
-        'menu':menu
+        'menu': menu
     }
-
     return render(request, 'main/project.html', data1)
 
 
