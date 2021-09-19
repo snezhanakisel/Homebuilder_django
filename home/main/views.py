@@ -44,3 +44,7 @@ def project(request):
         'orders': order
     }
     return render(request, 'main/project.html', data1)
+
+
+def about(request):
+    return render(request, 'main/about.html')
