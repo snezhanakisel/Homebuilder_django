@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home Builder - Free Bootstrap 4 Template by Colorlib</title>
+    <title>Home Builder</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -53,23 +53,18 @@
             <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
           </div>
         </form>
+			{% for m,menu_url in menu.items %}
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav mr-auto">
-	        	<li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-	        	<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-	        	<li class="nav-item"><a href="team.html" class="nav-link">Our team</a></li>
-	        	<li class="nav-item"><a href="project.html" class="nav-link">Project</a></li>
-	        	<li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+	        	<li class="nav-item"><a href="{{ menu_url }}" class="nav-link">{{ m }}</a></li>
 	        </ul>
 	      </div>
+			{% endfor %}
 	    </div>
 	  </nav>
     <!-- END nav -->
 
-
   {% block content %}{% endblock %}
-
 
       <footer class="footer">
 			<div class="container-fluid px-lg-5">

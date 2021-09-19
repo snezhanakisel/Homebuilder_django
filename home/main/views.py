@@ -9,7 +9,15 @@ def index(request):
     carusel = Carusel.objects.all()
     cat = Category.objects.all()
     mission = Mission.objects.all()
-    project = Project.objects.all()
+    menu = {
+        'Home': 'home',
+        'About': 'about',
+        'Our team': 'team',
+        'Project': 'project',
+        'Blog': 'blog',
+        'Contact': 'contact'
+    }
+
     data = {
         'carusels': carusel,
         'construction': 'Construction',
@@ -23,7 +31,16 @@ def index(request):
         'content': 'Separated they live in. A small river named Duden flows.',
         'cats': cat,
         'missions': mission,
-        'projects': project
+        'menu': menu
+
 
     }
     return render(request, 'main/index.html', data)
+
+
+def project(request):
+    order = Project.objects.all()
+    data1 = {
+        'orders': order
+    }
+    return render(request, 'main/project.html', data1)

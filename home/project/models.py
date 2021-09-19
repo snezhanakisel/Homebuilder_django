@@ -6,7 +6,7 @@ from django.db import models
 class Project(models.Model):
     title = models.CharField('Заголовок', max_length=20)
     subtitle = models.CharField('Подзаголовок', max_length=30)
-    image = models.ImageField('Картинка', upload_to='static')
+    image = models.ImageField('Картинка', upload_to='static/images')
 
     def __str__(self):
         return self.title
@@ -14,4 +14,3 @@ class Project(models.Model):
     class Meta:
         verbose_name = 'Проект'
         verbose_name_plural = 'Проекты'
-
