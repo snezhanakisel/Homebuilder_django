@@ -90,3 +90,21 @@ def about(request):
         'tel': '8-015-321-654'
     }
     return render(request, 'main/about.html', data)
+
+
+def team(request):
+    data = {
+        'menu': menu,
+        'facebook': 'https://www.facebook.com/TheElonmus',
+        'twitter': 'https://twitter.com/elonmusk',
+        'instagram': 'https://www.instagram.com/elonrmuskk/',
+        'construction': 'Construction',
+        'renovation': 'House Renovation',
+        'painting': 'Painting',
+        'design': 'Architecture Design',
+        'contact': 'Contact',
+        'city': 'London',
+        'adres': 'St. Liberty, 15',
+        'tel': '8-015-321-654',
+    }
+    return render(request, 'main/team.html', data)
