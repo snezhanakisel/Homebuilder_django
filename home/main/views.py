@@ -20,6 +20,7 @@ def index(request):
     carusel = Carusel.objects.all()
     cat = Category.objects.all()
     mission = Mission.objects.all()
+    order = Project.objects.all()[:6]
 
     data = {
         'carusels': carusel,
@@ -32,12 +33,17 @@ def index(request):
         'work': 'High Quality Work',
         'help': '24/7 Help Support',
         'content': 'Separated they live in. A small river named Duden flows.',
+        'welcome': 'Welcome to Home Builder',
+        'create': 'We create and turn into reality',
+        'far': 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia',
         'cats': cat,
         'missions': mission,
         'menu': menu,
         'facebook': 'https://www.facebook.com/TheElonmus',
         'twitter': 'https://twitter.com/elonmusk',
-        'instagram': 'https://www.instagram.com/elonrmuskk/'
+        'instagram': 'https://www.instagram.com/elonrmuskk/',
+        'orders':order
+
 
     }
     return render(request, 'main/index.html', data)
