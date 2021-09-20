@@ -42,7 +42,11 @@ def index(request):
         'facebook': 'https://www.facebook.com/TheElonmus',
         'twitter': 'https://twitter.com/elonmusk',
         'instagram': 'https://www.instagram.com/elonrmuskk/',
-        'orders':order
+        'orders': order,
+        'contact': 'Contact',
+        'city': 'London',
+        'adres': 'St. Liberty, 15',
+        'tel': '8-015-321-654'
 
 
     }
@@ -56,7 +60,15 @@ def project(request):
         'menu': menu,
         'facebook': 'https://www.facebook.com/TheElonmus',
         'twitter': 'https://twitter.com/elonmusk',
-        'instagram': 'https://www.instagram.com/elonrmuskk/'
+        'instagram': 'https://www.instagram.com/elonrmuskk/',
+        'construction': 'Construction',
+        'renovation': 'House Renovation',
+        'painting': 'Painting',
+        'design': 'Architecture Design',
+        'contact': 'Contact',
+        'city': 'London',
+        'adres': 'St. Liberty, 15',
+        'tel': '8-015-321-654',
     }
     return render(request, 'main/project.html', data1)
 
@@ -67,6 +79,14 @@ def about(request):
         'menu': menu,
         'facebook': 'https://www.facebook.com/TheElonmus',
         'twitter': 'https://twitter.com/elonmusk',
-        'instagram': 'https://www.instagram.com/elonrmuskk/'
+        'instagram': 'https://www.instagram.com/elonrmuskk/',
+        'construction': 'Construction',
+        'renovation': 'House Renovation',
+        'painting': 'Painting',
+        'design': 'Architecture Design',
+        'contact': 'Contact',
+        'city': 'London',
+        'adres': 'St. Liberty, 15',
+        'tel': '8-015-321-654'
     }
     return render(request, 'main/about.html', data)

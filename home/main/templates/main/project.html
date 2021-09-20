@@ -16,7 +16,7 @@
     <section class="ftco-section ftco-no-pt ftco-no-pb">
 		  <div class="container-fluid px-md-0">
         <div class="row no-gutters">
-          {%  for order in orders %}
+          {% for order in orders  %}
           <div class="col-md-4 ftco-animate">
             <div class="work img d-flex align-items-end" style="background-image: url({{ order.image }});">
             	<a href="{{ order.image }}" class="icon image-popup d-flex justify-content-center align-items-center">
@@ -27,11 +27,11 @@
 	              	<span>{{ order.title }}</span>
 	              	<h2><a href="work-single.html">{{ order.subtitle }}</a></h2>
 	              </div>
-                </div>
+              </div>
             </div>
           </div>
-          {% endfor %}
-        </div>
+            {% endfor %}
+      </div>
           </div>
-    </section>
+		</section>
 {% endblock %}
