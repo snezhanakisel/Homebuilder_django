@@ -12,7 +12,9 @@ menu = {
     'Blog': 'blog',
     'Contact': 'contact'
 }
+social_nerwork = {
 
+}
 
 def index(request):
     carusel = Carusel.objects.all()
@@ -32,7 +34,10 @@ def index(request):
         'content': 'Separated they live in. A small river named Duden flows.',
         'cats': cat,
         'missions': mission,
-        'menu': menu
+        'menu': menu,
+        'facebook': 'https://www.facebook.com/TheElonmus',
+        'twitter': 'https://twitter.com/elonmusk',
+        'instagram': 'https://www.instagram.com/elonrmuskk/'
 
     }
     return render(request, 'main/index.html', data)
@@ -42,7 +47,10 @@ def project(request):
     order = Project.objects.all()
     data1 = {
         'orders': order,
-        'menu': menu
+        'menu': menu,
+        'facebook': 'https://www.facebook.com/TheElonmus',
+        'twitter': 'https://twitter.com/elonmusk',
+        'instagram': 'https://www.instagram.com/elonrmuskk/'
     }
     return render(request, 'main/project.html', data1)
 
@@ -50,6 +58,9 @@ def project(request):
 def about(request):
 
     data = {
-        'menu': menu
+        'menu': menu,
+        'facebook': 'https://www.facebook.com/TheElonmus',
+        'twitter': 'https://twitter.com/elonmusk',
+        'instagram': 'https://www.instagram.com/elonrmuskk/'
     }
     return render(request, 'main/about.html', data)
