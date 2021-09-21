@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Carusel, Category, Mission
 from project.models import *
+from team.models import *
 
 # Create your views here.
 
@@ -93,6 +94,7 @@ def about(request):
 
 
 def team(request):
+    employee = Employee.objects.all()
     data = {
         'menu': menu,
         'facebook': 'https://www.facebook.com/TheElonmus',
@@ -106,5 +108,6 @@ def team(request):
         'city': 'London',
         'adres': 'St. Liberty, 15',
         'tel': '8-015-321-654',
+        'employees': employee,
     }
     return render(request, 'main/team.html', data)
