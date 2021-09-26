@@ -3,6 +3,7 @@ from .models import Carusel, Category, Mission
 from project.models import *
 from team.models import *
 from .forms import ContactForm
+from django.contrib import messages
 
 # Create your views here.
 
@@ -45,7 +46,7 @@ def index(request):
         'twitter': 'https://twitter.com/elonmusk',
         'instagram': 'https://www.instagram.com/elonrmuskk/',
         'orders': order,
-        'contact': 'Contact',
+        'for_contact': 'Contact',
         'city': 'London',
         'adres': 'St. Liberty, 15',
         'tel': '8-015-321-654'
@@ -67,7 +68,7 @@ def project(request):
         'renovation': 'House Renovation',
         'painting': 'Painting',
         'design': 'Architecture Design',
-        'contact': 'Contact',
+        'for_contact': 'Contact',
         'city': 'London',
         'adres': 'St. Liberty, 15',
         'tel': '8-015-321-654',
@@ -86,7 +87,7 @@ def about(request):
         'renovation': 'House Renovation',
         'painting': 'Painting',
         'design': 'Architecture Design',
-        'contact': 'Contact',
+        'for_contact': 'Contact',
         'city': 'London',
         'adres': 'St. Liberty, 15',
         'tel': '8-015-321-654'
@@ -105,7 +106,7 @@ def team(request):
         'renovation': 'House Renovation',
         'painting': 'Painting',
         'design': 'Architecture Design',
-        'contact': 'Contact',
+        'for_contact': 'Contact',
         'city': 'London',
         'adres': 'St. Liberty, 15',
         'tel': '8-015-321-654',
@@ -120,6 +121,24 @@ def contact_uc(request):
         contact = ContactForm(request.POST)
         if contact.is_valid():
             contact.save()
+            messages.success(request, 'Thank you for message')
 
     contact = ContactForm
-    return render(request, 'main/contact.html', {'contact': contact})
+    data = {
+        'menu': menu,
+        'facebook': 'https://www.facebook.com/TheElonmus',
+        'twitter': 'https://twitter.com/elonmusk',
+        'instagram': 'https://www.instagram.com/elonrmuskk/',
+        'construction': 'Construction',
+        'renovation': 'House Renovation',
+        'painting': 'Painting',
+        'design': 'Architecture Design',
+        'for_contact': 'Contact',
+        'contact': contact,
+        'city': 'London',
+        'adres': 'St. Liberty, 15',
+        'tel': '8-015-321-654',
+        'email': 'builder@gmail.com',
+        'website': 'homebuilder.com'
+    }
+    return render(request, 'main/contact.html', data)

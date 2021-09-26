@@ -10,8 +10,8 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class ContactAdmin(admin.ModelAdmin):
-
     list_display = ('name', 'subject')
+    search_fields = ('name', 'subject')
 
 
 admin.site.register(Carusel)
