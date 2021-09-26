@@ -28,3 +28,14 @@ class Mission(models.Model):
 
     def __str__(self):
         return self.text
+
+
+class Contact(models.Model):
+    name = models.CharField('Имя', max_length=20)
+    email = models.EmailField('Почта')
+    subject = models.CharField('Тема сообщения', max_length=30)
+    message = models.TextField('Комментарий')
+
+    class Meta:
+        verbose_name = 'Сообщение'
+        verbose_name_plural = 'Сообщения'

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Carusel, Category, Mission
 from project.models import *
 from team.models import *
+from .forms import ContactForm
 
 # Create your views here.
 
@@ -111,3 +112,14 @@ def team(request):
         'employees': employee,
     }
     return render(request, 'main/team.html', data)
+
+
+def contact_uc(request):
+
+    if request.method == 'POST':
+        contact = ContactForm(request.POST)
+        if contact.is_valid():
+            contact.save()
+
+    contact = ContactForm
+    return render(request, 'main/contact.html', {'contact': contact})
