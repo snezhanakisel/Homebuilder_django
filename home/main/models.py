@@ -39,3 +39,16 @@ class Contact(models.Model):
     class Meta:
         verbose_name = 'Сообщение'
         verbose_name_plural = 'Сообщения'
+
+
+class Feedback(models.Model):
+    name = models.CharField('Имя', max_length=20)
+    email = models.EmailField('Почта')
+    message = models.TextField('Комментарий')
+
+    class Meta:
+        verbose_name = 'Отзыв'
+        verbose_name_plural = 'Отзывы'
+
+    def __str__(self):
+        return self.name
