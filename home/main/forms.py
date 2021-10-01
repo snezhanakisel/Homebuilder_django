@@ -8,23 +8,30 @@ class ContactForm(ModelForm):
         model = Contact
         fields = ['name', 'email', 'subject', 'message']
         widgets = {
-            'name': TextInput( attrs={
+            'name': TextInput(attrs={
                 'class': 'form-control',
                 'id': 'name',
                 'placeholder': 'Your Name'
-            } ),
-            'email': TextInput( attrs={
+            }),
+            'email': TextInput(attrs={
                 'class': 'form-control',
                 'id': 'email',
                 'placeholder': 'Your Email'
-            } ),
-            'message': Textarea( attrs={
+            }),
+            'subject': TextInput(attrs={
+                'class': 'form-control',
+                'id': 'subject',
+                'placeholder': 'Subject'
+
+            }),
+            'message': Textarea(attrs={
                 'class': 'form-control',
                 'id': 'message',
                 'placeholder': 'Your Message'
 
-            } )
+            })
         }
+
 
 class FeedbackForm(ModelForm):
 
@@ -32,26 +39,20 @@ class FeedbackForm(ModelForm):
         model = Feedback
         fields = ['name', 'email', 'message']
         widgets = {
-            'name': TextInput( attrs={
+            'name': TextInput(attrs={
                 'class': 'form-control',
                 'id': 'name',
-                'placeholder': 'Name'
-            } ),
-            'email': TextInput( attrs={
+                'placeholder': 'Your name'
+            }),
+            'email': TextInput(attrs={
                 'class': 'form-control',
-                'id': 'email',
+                'id': 'Email',
                 'placeholder': 'name@example.com'
-            } ),
-            'subject': TextInput( attrs={
-                'class': 'form-control',
-                'id': 'subject',
-                'placeholder': 'Subject'
-
-            } ),
-            'message': Textarea( attrs={
+            }),
+            'message': Textarea(attrs={
                 'class': 'form-control',
                 'id': 'message',
                 'placeholder': 'Message'
 
-            } )
+            })
         }

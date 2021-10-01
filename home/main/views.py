@@ -21,17 +21,16 @@ social_nerwork = {
 
 def index(request):
     if request.method == 'POST':
-        feedbacks = FeedbackForm(request.POST)
-        if feedbacks.is_valid():
-            feedbacks.save()
-
+        feedback = FeedbackForm(request.POST)
+        if feedback.is_valid():
+            feedback.save()
 
 
     carusel = Carusel.objects.all()
     cat = Category.objects.all()
     mission = Mission.objects.all()
     order = Project.objects.all()[:6]
-    feedbacks = FeedbackForm
+    feedback = FeedbackForm
 
     data = {
         'carusels': carusel,
@@ -58,7 +57,7 @@ def index(request):
         'city': 'London',
         'adres': 'St. Liberty, 15',
         'tel': '8-015-321-654',
-        'feedbacks': feedbacks,
+        'feedbacks': feedback,
     }
     return render(request, 'main/index.html', data)
 
@@ -92,11 +91,11 @@ def project(request):
 
 def about(request):
     if request.method == 'POST':
-        feedbacks = FeedbackForm(request.POST)
-        if feedbacks.is_valid():
-            feedbacks.save()
+        feedback = FeedbackForm(request.POST)
+        if feedback.is_valid():
+            feedback.save()
 
-    feedbacks = FeedbackForm
+    feedback = FeedbackForm
     data = {
         'menu': menu,
         'facebook': 'https://www.facebook.com/TheElonmus',
@@ -110,19 +109,19 @@ def about(request):
         'city': 'London',
         'adres': 'St. Liberty, 15',
         'tel': '8-015-321-654',
-        'feedbacks': feedbacks
+        'feedbacks': feedback
     }
     return render(request, 'main/about.html', data)
 
 
 def team(request):
     if request.method == 'POST':
-        feedbacks = FeedbackForm(request.POST)
-        if feedbacks.is_valid():
-            feedbacks.save()
+        feedback = FeedbackForm(request.POST)
+        if feedback.is_valid():
+            feedback.save()
 
     employee = Employee.objects.all()
-    feedbacks = FeedbackForm
+    feedback = FeedbackForm
     data = {
         'menu': menu,
         'facebook': 'https://www.facebook.com/TheElonmus',
@@ -137,26 +136,25 @@ def team(request):
         'adres': 'St. Liberty, 15',
         'tel': '8-015-321-654',
         'employees': employee,
-        'feedbacks': feedbacks
+        'feedbacks': feedback
     }
     return render(request, 'main/team.html', data)
 
 
 def contact_us(request):
 
-    if request.method == 'POST':
+    if request.method == 'POST' and 'Sendmessage' in request.POST:
         contact = ContactForm(request.POST)
         if contact.is_valid():
             contact.save()
             messages.success(request, 'Thank you for message')
-    if request.method == 'POST':
-        feedbacks = FeedbackForm(request.POST)
-        if feedbacks.is_valid():
-            feedbacks.save()
+    if request.method == 'POST' and 'Send' in request.POST:
+        feedback = FeedbackForm(request.POST)
+        if feedback.is_valid():
+            feedback.save()
 
     contact = ContactForm
-    feedbacks = FeedbackForm
-
+    feedback = FeedbackForm
 
     data = {
         'menu': menu,
@@ -174,7 +172,7 @@ def contact_us(request):
         'tel': '8-015-321-654',
         'email': 'builder@gmail.com',
         'website': 'homebuilder.com',
-        'feedbacks': feedbacks
+        'feedbacks': feedback
 
     }
     return render(request, 'main/contact.html', data)
