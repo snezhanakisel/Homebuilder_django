@@ -1,8 +1,9 @@
+
 from django.shortcuts import render
 from .models import Carusel, Category, Mission, Feedback
 from project.models import *
 from team.models import *
-from .forms import ContactForm, FeedbackForm
+from .forms import ContactForm, FeedbackForm, MailForm
 from django.contrib import messages
 
 # Create your views here.
@@ -19,7 +20,18 @@ social_nerwork = {
 
 }
 
+
 def index(request):
+    if request.method == 'POST' and 'Subscribe' in request.POST:
+        mail = MailForm(request.POST)
+        if mail.is_valid():
+            mail.save()
+            messages.success(request, 'Thank you for message')
+    if request.method == 'POST' and 'Send' in request.POST:
+        feed = FeedbackForm(request.POST)
+        if feed.is_valid():
+            feed.save()
+
     if request.method == 'POST':
         feed = FeedbackForm(request.POST)
         if feed.is_valid():
@@ -32,6 +44,7 @@ def index(request):
     order = Project.objects.all()[:6]
     feed = FeedbackForm
     feedback = Feedback.objects.all()
+    mail = MailForm
 
 
     data = {
@@ -60,7 +73,8 @@ def index(request):
         'adres': 'St. Liberty, 15',
         'tel': '8-015-321-654',
         'feed': feed,
-        'feedbacks': feedback
+        'feedbacks': feedback,
+        'mail': mail
 
     }
     return render(request, 'main/index.html', data)

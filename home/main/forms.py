@@ -1,5 +1,5 @@
 from django.forms import ModelForm, Textarea, TextInput
-from .models import Contact, Feedback
+from .models import Contact, Feedback, Mail
 
 
 class ContactForm(ModelForm):
@@ -54,5 +54,19 @@ class FeedbackForm(ModelForm):
                 'id': 'message',
                 'placeholder': 'Message'
 
+            })
+        }
+
+
+class MailForm(ModelForm):
+
+    class Meta:
+        model = Mail
+        fields = ['email']
+        widgets = {
+            'email': TextInput(attrs={
+                'class': 'form-control',
+                'id': 'email',
+                'placeholder': 'Enter your email...'
             })
         }

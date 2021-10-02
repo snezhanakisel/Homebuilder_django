@@ -320,11 +320,12 @@
 					            <h2 class="mb-0" style="color:white; font-size: 24px;">Subcribe to our Newsletter</h2>
 					          </div>
 					          <div class="col-md-6 d-flex align-items-center">
-					            <form action="#" class="subscribe-form">
+					            <form action="{% url 'team' %}" class="subscribe-form" method="post">
+                                  {% csrf_token %}
 					              <div class="form-group d-flex">
-					                <input type="text" class="form-control" placeholder="Enter email address">
-					                <input type="submit" value="Subscribe" class="submit px-3">
-					              </div>
+                                      {{ mail.email }}
+					                <button type="submit" class="form-control submit px-3" name="Subscribe">Subscribe</button>
+                                  </div>
 					            </form>
 					          </div>
 				          </div>
