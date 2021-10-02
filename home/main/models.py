@@ -31,7 +31,7 @@ class Mission(models.Model):
 
 
 class Contact(models.Model):
-    name = models.CharField('Имя', max_length=20)
+    name = models.CharField('Имя, профессия', max_length=20)
     email = models.EmailField('Почта')
     subject = models.CharField('Тема сообщения', max_length=30)
     message = models.TextField('Комментарий')

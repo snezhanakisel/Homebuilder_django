@@ -229,26 +229,25 @@
         </div>
         <div class="row ftco-animate">
           <div class="col-md-12">
-              {% for feedback in feedbacks %}
             <div class="carousel-testimony owl-carousel ftco-owl">
-              <div class="item">
+              {% for feedback in feedbacks %}
+                <div class="item">
                 <div class="testimony-wrap py-4">
                 	<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></span></div>
                   <div class="text">
                     <p class="mb-4">{{ feedback.message }}</p>
                     <div class="d-flex align-items-center">
-                    	<div class="user-img" style="background-image: url(images/person_1.jpg)"></div>
                     	<div class="pl-3">
 		                    <p class="name">{{ feedback.name }}</p>
 		                    <span class="position"></span>
-		                  </div>
+		                </div>
 	                  </div>
                   </div>
-                </div>
-              </div>
             </div>
-              {% endfor %}
           </div>
+         {% endfor %}
+      </div>
+     </div>
         </div>
       </div>
     </section>

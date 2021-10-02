@@ -115,13 +115,13 @@
 						<form action="" class="contact-form" method="post">
 						{% csrf_token %}
               			<div class="form-group">
-				  		{{ feedbacks.name }}
+				  		{{ feed.name }}
               			</div>
               			<div class="form-group">
-				  		{{ feedbacks.email }}
+				  		{{ feed.email }}
               			</div>
               			<div class="form-group">
-				  		{{ feedbacks.message }}
+				  		{{ feed.message }}
               			</div>
               			<div class="form-group">
               			<button type="submit" class="form-control submit px-3" name="Send">Send</button>

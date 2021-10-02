@@ -11,7 +11,7 @@ class ContactForm(ModelForm):
             'name': TextInput(attrs={
                 'class': 'form-control',
                 'id': 'name',
-                'placeholder': 'Your Name'
+                'placeholder': 'Your Name, Profession'
             }),
             'email': TextInput(attrs={
                 'class': 'form-control',
@@ -42,7 +42,7 @@ class FeedbackForm(ModelForm):
             'name': TextInput(attrs={
                 'class': 'form-control',
                 'id': 'name',
-                'placeholder': 'Your name'
+                'placeholder': 'Your name, Profession'
             }),
             'email': TextInput(attrs={
                 'class': 'form-control',

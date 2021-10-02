@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Carusel, Category, Mission
+from .models import Carusel, Category, Mission, Feedback
 from project.models import *
 from team.models import *
 from .forms import ContactForm, FeedbackForm
@@ -21,16 +21,18 @@ social_nerwork = {
 
 def index(request):
     if request.method == 'POST':
-        feedback = FeedbackForm(request.POST)
-        if feedback.is_valid():
-            feedback.save()
+        feed = FeedbackForm(request.POST)
+        if feed.is_valid():
+            feed.save()
 
 
     carusel = Carusel.objects.all()
     cat = Category.objects.all()
     mission = Mission.objects.all()
     order = Project.objects.all()[:6]
-    feedback = FeedbackForm
+    feed = FeedbackForm
+    feedback = Feedback.objects.all()
+
 
     data = {
         'carusels': carusel,
@@ -57,19 +59,21 @@ def index(request):
         'city': 'London',
         'adres': 'St. Liberty, 15',
         'tel': '8-015-321-654',
-        'feedbacks': feedback,
+        'feed': feed,
+        'feedbacks': feedback
+
     }
     return render(request, 'main/index.html', data)
 
 
 def project(request):
     if request.method == 'POST':
-        feedbacks = FeedbackForm(request.POST)
-        if feedbacks.is_valid():
-            feedbacks.save()
+        feed = FeedbackForm(request.POST)
+        if feed.is_valid():
+            feed.save()
 
     order = Project.objects.all()
-    feedbacks = FeedbackForm
+    feed = FeedbackForm
     data = {
         'orders': order,
         'menu': menu,
@@ -84,18 +88,18 @@ def project(request):
         'city': 'London',
         'adres': 'St. Liberty, 15',
         'tel': '8-015-321-654',
-        'feedbacks': feedbacks
+        'feeds': feed
     }
     return render(request, 'main/project.html', data)
 
 
 def about(request):
     if request.method == 'POST':
-        feedback = FeedbackForm(request.POST)
-        if feedback.is_valid():
-            feedback.save()
+        feed = FeedbackForm(request.POST)
+        if feed.is_valid():
+            feed.save()
 
-    feedback = FeedbackForm
+    feed = FeedbackForm
     data = {
         'menu': menu,
         'facebook': 'https://www.facebook.com/TheElonmus',
@@ -109,19 +113,19 @@ def about(request):
         'city': 'London',
         'adres': 'St. Liberty, 15',
         'tel': '8-015-321-654',
-        'feedbacks': feedback
+        'feeds': feed
     }
     return render(request, 'main/about.html', data)
 
 
 def team(request):
     if request.method == 'POST':
-        feedback = FeedbackForm(request.POST)
-        if feedback.is_valid():
-            feedback.save()
+        feed = FeedbackForm(request.POST)
+        if feed.is_valid():
+            feed.save()
 
     employee = Employee.objects.all()
-    feedback = FeedbackForm
+    feed = FeedbackForm
     data = {
         'menu': menu,
         'facebook': 'https://www.facebook.com/TheElonmus',
@@ -136,7 +140,7 @@ def team(request):
         'adres': 'St. Liberty, 15',
         'tel': '8-015-321-654',
         'employees': employee,
-        'feedbacks': feedback
+        'feeds': feed
     }
     return render(request, 'main/team.html', data)
 
@@ -149,12 +153,12 @@ def contact_us(request):
             contact.save()
             messages.success(request, 'Thank you for message')
     if request.method == 'POST' and 'Send' in request.POST:
-        feedback = FeedbackForm(request.POST)
-        if feedback.is_valid():
-            feedback.save()
+        feed = FeedbackForm(request.POST)
+        if feed.is_valid():
+            feed.save()
 
     contact = ContactForm
-    feedback = FeedbackForm
+    feed = FeedbackForm
 
     data = {
         'menu': menu,
@@ -172,7 +176,7 @@ def contact_us(request):
         'tel': '8-015-321-654',
         'email': 'builder@gmail.com',
         'website': 'homebuilder.com',
-        'feedbacks': feedback
+        'feeds': feed
 
     }
     return render(request, 'main/contact.html', data)
