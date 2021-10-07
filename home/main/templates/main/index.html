@@ -124,25 +124,25 @@
 		            <p>{{ far }}</p>
                       <div class="tabulation-2 mt-4">
 									<ul class="nav nav-pills nav-fill d-md-flex d-block">
-                                        {% for cat in cats %}
+                                        {% for c in cat %}
                                         <li class="nav-item mb-md-0 mb-2">
-									    <a class="nav-link py-2" data-toggle="tab" href="#{{ cat.slug }}">{{ cat }}</a>
+									    <a class="nav-link py-2" data-toggle="tab" href="#{{ c.slug }}" >{{ c.name }}</a>
                                         </li>
                                         {% endfor %}
 									</ul>
                                         <div class="tab-content bg-light rounded mt-2">
-                                        {% for mission in missions %}
-                                        {% for cat in cats %}
-                                        {% if mission.cat_id == cat.id  %}
-                                        <div class="tab-pane container p-0 active" id="{{ cat.slug }}">
-                                          <p>{{ mission.text }}</p>
+                                        {% for c in cat %}
+                                        {% for m in mission %}
+                                        {% if m.cat_id == c.id  %}
+                                        <div class="tab-pane container p-0 active" id="{{ c.slug }}">
+                                          <p>{{ m.text }}</p>
                                         {% endif %}
                                         {% endfor %}
                                         {% endfor %}
                                         </div>
                                         </div>
                       </div>
-                    </div>
+                  </div>
                   </div>
                 </div>
             </div>
@@ -320,7 +320,7 @@
 					            <h2 class="mb-0" style="color:white; font-size: 24px;">Subcribe to our Newsletter</h2>
 					          </div>
 					          <div class="col-md-6 d-flex align-items-center">
-					            <form action="{% url 'team' %}" class="subscribe-form" method="post">
+					            <form action="{% url 'mail' %}" class="subscribe-form" method="post">
                                   {% csrf_token %}
 					              <div class="form-group d-flex">
                                       {{ mail.email }}

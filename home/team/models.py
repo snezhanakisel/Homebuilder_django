@@ -7,7 +7,7 @@ class Employee(models.Model):
 
     name = models.CharField('Имя', max_length=30)
     position = models.CharField('Должность', max_length=30)
-    image = models.ImageField('Картинка', upload_to='static/images')
+    image = models.ImageField('Картинка', upload_to='pictures')
     description = models.CharField('Описание', max_length=200)
 
     def __str__(self):

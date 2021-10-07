@@ -13,6 +13,7 @@ class ContactAdmin(admin.ModelAdmin):
     list_display = ('name', 'subject')
     search_fields = ('name', 'subject')
 
+
 class MailAdmin(admin.ModelAdmin):
     list_display = ('email', 'date')
 

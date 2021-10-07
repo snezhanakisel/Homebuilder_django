@@ -1,32 +1,30 @@
-
 from django.shortcuts import render
 from .models import Carusel, Category, Mission, Feedback
 from project.models import *
-from team.models import *
+from team.models import Employee
 from .forms import ContactForm, FeedbackForm, MailForm
 from django.contrib import messages
 
 # Create your views here.
 
 menu = {
-    'Home': 'home',
+    'Home': 'index',
     'About': 'about',
     'Our team': 'team',
     'Project': 'project',
     'Blog': 'blog',
     'Contact': 'contact'
 }
-social_nerwork = {
-
-}
 
 
 def index(request):
+
     if request.method == 'POST' and 'Subscribe' in request.POST:
         mail = MailForm(request.POST)
         if mail.is_valid():
             mail.save()
             messages.success(request, 'Thank you for message')
+
     if request.method == 'POST' and 'Send' in request.POST:
         feed = FeedbackForm(request.POST)
         if feed.is_valid():
@@ -37,7 +35,6 @@ def index(request):
         if feed.is_valid():
             feed.save()
 
-
     carusel = Carusel.objects.all()
     cat = Category.objects.all()
     mission = Mission.objects.all()
@@ -45,7 +42,6 @@ def index(request):
     feed = FeedbackForm
     feedback = Feedback.objects.all()
     mail = MailForm
-
 
     data = {
         'carusels': carusel,
@@ -61,8 +57,8 @@ def index(request):
         'welcome': 'Welcome to Home Builder',
         'create': 'We create and turn into reality',
         'far': 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia',
-        'cats': cat,
-        'missions': mission,
+        'cat': cat,
+        'mission': mission,
         'menu': menu,
         'facebook': 'https://www.facebook.com/TheElonmus',
         'twitter': 'https://twitter.com/elonmusk',
@@ -102,12 +98,13 @@ def project(request):
         'city': 'London',
         'adres': 'St. Liberty, 15',
         'tel': '8-015-321-654',
-        'feeds': feed
+        'feed': feed
     }
     return render(request, 'main/project.html', data)
 
 
 def about(request):
+
     if request.method == 'POST':
         feed = FeedbackForm(request.POST)
         if feed.is_valid():
@@ -127,12 +124,13 @@ def about(request):
         'city': 'London',
         'adres': 'St. Liberty, 15',
         'tel': '8-015-321-654',
-        'feeds': feed
+        'feed': feed
     }
     return render(request, 'main/about.html', data)
 
 
 def team(request):
+
     if request.method == 'POST':
         feed = FeedbackForm(request.POST)
         if feed.is_valid():
@@ -154,7 +152,7 @@ def team(request):
         'adres': 'St. Liberty, 15',
         'tel': '8-015-321-654',
         'employees': employee,
-        'feeds': feed
+        'feed': feed
     }
     return render(request, 'main/team.html', data)
 
@@ -190,7 +188,7 @@ def contact_us(request):
         'tel': '8-015-321-654',
         'email': 'builder@gmail.com',
         'website': 'homebuilder.com',
-        'feeds': feed
+        'feed': feed
 
     }
     return render(request, 'main/contact.html', data)
