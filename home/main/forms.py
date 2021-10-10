@@ -3,7 +3,6 @@ from .models import Contact, Feedback, Mail
 
 
 class ContactForm(ModelForm):
-
     class Meta:
         model = Contact
         fields = ['name', 'email', 'subject', 'message']
@@ -70,3 +69,5 @@ class MailForm(ModelForm):
                 'placeholder': 'Enter your email...'
             })
         }
+
+

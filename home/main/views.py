@@ -5,16 +5,8 @@ from team.models import Employee
 from .forms import ContactForm, FeedbackForm, MailForm
 from django.contrib import messages
 
-# Create your views here.
 
-menu = {
-    'Home': 'index',
-    'About': 'about',
-    'Our team': 'team',
-    'Project': 'project',
-    'Blog': 'blog',
-    'Contact': 'contact'
-}
+# Create your views here.
 
 
 def index(request):
@@ -59,7 +51,6 @@ def index(request):
         'far': 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia',
         'cat': cat,
         'mission': mission,
-        'menu': menu,
         'facebook': 'https://www.facebook.com/TheElonmus',
         'twitter': 'https://twitter.com/elonmusk',
         'instagram': 'https://www.instagram.com/elonrmuskk/',
@@ -86,7 +77,6 @@ def project(request):
     feed = FeedbackForm
     data = {
         'orders': order,
-        'menu': menu,
         'facebook': 'https://www.facebook.com/TheElonmus',
         'twitter': 'https://twitter.com/elonmusk',
         'instagram': 'https://www.instagram.com/elonrmuskk/',
@@ -112,7 +102,6 @@ def about(request):
 
     feed = FeedbackForm
     data = {
-        'menu': menu,
         'facebook': 'https://www.facebook.com/TheElonmus',
         'twitter': 'https://twitter.com/elonmusk',
         'instagram': 'https://www.instagram.com/elonrmuskk/',
@@ -139,7 +128,6 @@ def team(request):
     employee = Employee.objects.all()
     feed = FeedbackForm
     data = {
-        'menu': menu,
         'facebook': 'https://www.facebook.com/TheElonmus',
         'twitter': 'https://twitter.com/elonmusk',
         'instagram': 'https://www.instagram.com/elonrmuskk/',
@@ -173,7 +161,6 @@ def contact_us(request):
     feed = FeedbackForm
 
     data = {
-        'menu': menu,
         'facebook': 'https://www.facebook.com/TheElonmus',
         'twitter': 'https://twitter.com/elonmusk',
         'instagram': 'https://www.instagram.com/elonrmuskk/',
