@@ -8,12 +8,11 @@ class UserRegisterForm(UserCreationForm):
     email = forms.EmailField(label='Введите почту',
                              required=True,
                              widget=forms.TextInput(attrs={'class': 'form-control',
-                                                           'placeholder': 'Введте почту'})
-    )
+                                                           'placeholder': 'Введте почту'}))
     username = forms.CharField(label='Введите логин',
                                required=True,
                                help_text='Нельзя вводить символы: @, #, !',
-                               widget=forms.TextInput(attrs={'class':'form-control',
+                               widget=forms.TextInput(attrs={'class': 'form-control',
                                                              'placeholder': 'Введите логин'}))
 
     password1 = forms.CharField(label='Введите пароль',
@@ -48,9 +47,8 @@ class UserUpdateForm(forms.ModelForm):
 
 class ProfileImageForm(forms.ModelForm):
     img = forms.ImageField(label='Загрузите фото',
-                             required=False,
-                           widget=forms.FileInput()
-                             )
+                           required=False,
+                           widget=forms.FileInput())
 
     class Meta:
         model = Profile

@@ -26,20 +26,20 @@ def register(request):
 @login_required()
 def profile(request):
     if request.method == "POST":
-        profileform = ProfileImageForm(request.POST, request.FILES, instance=request.user.profile)
-        updateuserform = UserUpdateForm(request.POST, instance=request.user)
+        profileForm = ProfileImageForm(request.POST, request.FILES, instance=request.user.profile)
+        updateUserForm = UserUpdateForm(request.POST, instance=request.user)
 
-        if profileform.is_valid() and updateuserform.is_valid():
-            updateuserform.save()
-            profileform.save()
+        if profileForm.is_valid() and updateUserForm.is_valid():
+            updateUserForm.save()
+            profileForm.save()
             messages.success(request, f'Ваш аккаунт был успешно обнавлен!')
-            return redirect('profile', {'title': 'Кабинет пользователя'})
+            return redirect('profile')
     else:
-        profileform = ProfileImageForm(instance=request.user.profile)
-        updateuserform = UserUpdateForm(instance=request.user)
+        profileForm = ProfileImageForm(instance=request.user.profile)
+        updateUserForm = UserUpdateForm(instance=request.user)
 
     data = {
-        'profileform': profileform,
-        'updateuserform': updateuserform
+        'profileForm': profileForm,
+        'updateUserForm': updateUserForm
     }
     return render(request, 'users/profile.html', data)

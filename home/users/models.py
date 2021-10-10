@@ -16,12 +16,10 @@ class Profile(models.Model):
 
         image = Image.open(self.img.path)
 
-        if image.height > 256 or image.width >256:
+        if image.height > 256 or image.width > 256:
             resize = (256, 256)
             image.thumbnail(resize)
             image.save(self.img.path)
-
-
 
     class Meta:
         verbose_name = 'Профайл',
