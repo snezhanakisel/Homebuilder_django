@@ -4,6 +4,7 @@ from project.models import *
 from team.models import Employee
 from .forms import ContactForm, FeedbackForm, MailForm
 from django.contrib import messages
+from blog.models import Post
 
 
 # Create your views here.
@@ -34,6 +35,7 @@ def index(request):
     feed = FeedbackForm
     feedback = Feedback.objects.all()
     mail = MailForm
+    post = Post.objects.all()[:3]
 
     data = {
         'carusels': carusel,
@@ -61,7 +63,8 @@ def index(request):
         'tel': '8-015-321-654',
         'feed': feed,
         'feedbacks': feedback,
-        'mail': mail
+        'mail': mail,
+        'post':post
 
     }
     return render(request, 'main/index.html', data)

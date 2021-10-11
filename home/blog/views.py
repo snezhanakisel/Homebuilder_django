@@ -12,7 +12,7 @@ class ShowPostView(ListView):
     template_name = 'blog/post.html'
     context_object_name = 'post'
     ordering = ['-date']
-    paginate_by = 1
+    paginate_by = 3
 
     def get_context_data(self, **kwards):
         ctx = super(ShowPostView, self).get_context_data(**kwards)
