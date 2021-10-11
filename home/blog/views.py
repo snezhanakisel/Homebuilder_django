@@ -73,9 +73,19 @@ class UpdatePostView( LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         if self.request.user == post.author:
             return True
         return False
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    def get_context_data(self, **kwards):
+        ctx = super(UpdatePostView, self).get_context_data(**kwards)
+
+        ctx['title'] = 'Обновление статьи'
+        ctx['btn_text'] = 'Обновить статью'
+        return ctx
 
 
-class DeletePostView( DeleteView, UserPassesTestMixin, LoginRequiredMixin ):
+class DeletePostView(DeleteView, UserPassesTestMixin, LoginRequiredMixin):
     model = Post
     success_url = '/'
     template_name = 'blog/delete_post.html'
