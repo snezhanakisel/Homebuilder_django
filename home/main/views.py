@@ -23,10 +23,10 @@ def index(request):
         if feed.is_valid():
             feed.save()
 
-    if request.method == 'POST':
-        feed = FeedbackForm(request.POST)
-        if feed.is_valid():
-            feed.save()
+    # if request.method == 'POST':
+    #     feed = FeedbackForm(request.POST)
+    #     if feed.is_valid():
+    #         feed.save()
 
     carusel = Carusel.objects.all()
     cat = Category.objects.all()
@@ -104,6 +104,10 @@ def about(request):
             feed.save()
 
     feed = FeedbackForm
+    cat = Category.objects.all()
+    mission = Mission.objects.all()
+    order = Project.objects.all()[:6]
+    feedback = Feedback.objects.all()
     data = {
         'facebook': 'https://www.facebook.com/TheElonmus',
         'twitter': 'https://twitter.com/elonmusk',
@@ -116,7 +120,11 @@ def about(request):
         'city': 'London',
         'adres': 'St. Liberty, 15',
         'tel': '8-015-321-654',
-        'feed': feed
+        'feed': feed,
+        'cat': cat,
+        'mission': mission,
+        'orders': order,
+        'feedbacks': feedback
     }
     return render(request, 'main/about.html', data)
 

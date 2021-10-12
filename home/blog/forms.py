@@ -5,7 +5,7 @@ from .models import Comment
 class CommentForm(ModelForm):
     class Meta:
         model = Comment
-        fields = ['name', 'message']
+        fields = ['author', 'message']
         widgets = {
             'author': TextInput(attrs={
                 'class': 'form-control',

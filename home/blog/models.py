@@ -25,8 +25,8 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    post = models.ForeignKey('Post', verbose_name='Статья', on_delete=models.CASCADE )
-    name = models.CharField('Имя', max_length=30)
+    post = models.ForeignKey('Post', verbose_name='Статья', on_delete=models.CASCADE)
+    author = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
     message = models.CharField('Комментарий', max_length=150)
     date = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Опубликован')
 
@@ -35,5 +35,4 @@ class Comment(models.Model):
         verbose_name_plural = 'Комментарии'
 
     def __str__(self):
-        return self.name
-
+        return self.author

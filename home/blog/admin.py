@@ -10,8 +10,8 @@ class PostAdmin(admin.ModelAdmin):
 
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('name',)
-    search_fields = ('name',)
+    list_display = ('author',)
+    search_fields = ('author',)
 
 
 admin.site.register(Post, PostAdmin)
