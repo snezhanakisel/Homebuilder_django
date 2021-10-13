@@ -5,6 +5,7 @@
 
 {% block content %}
   <h1>{{ title }}</h1>
+<h1 href="{% url 'index' %}"></h1>
     <form method="post" class="form-register auth">
         {% csrf_token %}
         {{ form.as_p }}
