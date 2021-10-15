@@ -24,12 +24,12 @@
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="fa fa-bars"></span> Menu
 	      </button>
-				<form action="#" class="searchform order-lg-last">
-          <div class="form-group d-flex">
-            <input type="text" class="form-control pl-3" placeholder="Search">
-            <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
-          </div>
-        </form>
+<!--				<form action="#" class="searchform order-lg-last">-->
+<!--          <div class="form-group d-flex">-->
+<!--            <input type="text" class="form-control pl-3" placeholder="Search">-->
+<!--            <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>-->
+<!--          </div>-->
+<!--        </form>-->
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav mr-auto">
 	        	<li class="nav-item active"><a href="{% url 'index' %}" class="nav-link">Home</a></li>
@@ -306,7 +306,7 @@
             {% for p in post %}
           <div class="col-md-4 d-flex ftco-animate">
             <div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20 rounded" style="background-image: url('images/image_1.jpg');">
+              <a href="{% url 'blog' %}" class="block-20 rounded" style="background-image: url({{ p.image }});">
               </a>
               <div class="text mt-3 text-center">
               	<div class="meta mb-2">

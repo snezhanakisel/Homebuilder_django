@@ -162,7 +162,10 @@ def contact_us(request):
         contact = ContactForm(request.POST)
         if contact.is_valid():
             contact.save()
-            messages.success(request, 'Thank you for message')
+            messages.success(request, 'Спасибо за ваше сообщение!')
+        else:
+            messages.warning(request, 'Проверьте пожалуйста вводимую информацию!')
+
     if request.method == 'POST' and 'Send' in request.POST:
         feed = FeedbackForm(request.POST)
         if feed.is_valid():

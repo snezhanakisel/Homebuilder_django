@@ -106,14 +106,6 @@
             </p>
             <h2 class="mb-3">{{ object.title }}</h2>
             <p>{{ object.text }}</p>
-            <div class="tag-widget post-tag-container mb-5 mt-5">
-              <div class="tagcloud">
-                <a href="#" class="tag-cloud-link">Life</a>
-                <a href="#" class="tag-cloud-link">Sport</a>
-                <a href="#" class="tag-cloud-link">Tech</a>
-                <a href="#" class="tag-cloud-link">Travel</a>
-              </div>
-            </div>
             
             <div class="about-author d-flex p-4 bg-light">
               <div class="bio mr-5">
@@ -129,23 +121,27 @@
           <a href="{% url 'post-delete' object.id %}" class="btn btn-danger">Удалить статью</a>
             {%  endif %}
             </div>
+            </div>
+            </div>
+            </div>
+          </div>
 
-            <div style="margin-left:20px;margin-top:20px">
-            <div class="pt-5 mt-5">
-              <h3 class="mb-5">Comments</h3>
-                {% for comment in post.blogcomment_set.all %}
-            <hr>
-            <p>{{ comment.author }} ({{ comment.date }}) - {{ comment.message }}</p>
-                {% endfor %}
-                <hr>
             {% if user.is_authenticated %}
               <a href="{% url 'post_comment' post.id %}">Добавить новый комментрий</a></p>
             {% else %}
             <p><a href="{% url 'user' %}?next={{ request.path }}">Login</a>Добавить комментарий</p>
             {% endif %}
+            <div style="margin-left:20px;margin-top:20px">
+            <div class="pt-5 mt-5">
+              <h3 class="mb-5">Comments</h3>
+                {% for comment in post.comments_set.all %}
+            <hr>
+            <p>{{ comment.author }} ({{ comment.date }}) - {{ comment.message }}</p>
+                {% endfor %}
+                <hr>
+                 </div>
             </div>
-            </div>
-
+            </section>
 
 
   <script src="{% static 'js/jquery.min.js' %}"></script>

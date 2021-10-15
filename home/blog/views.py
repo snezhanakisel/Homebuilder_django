@@ -103,38 +103,23 @@ class UserAllPostView(ListView):
 
 
 class PostCommentCreate(LoginRequiredMixin, CreateView):
-    """
-    Form for adding a blog comment. Requires login.
-    """
+
     model = Comment
     template_name = 'blog/post_commentform.html'
     fields = ['message', ]
-    context_object_name = "comment"
 
     def get_context_data(self, **kwargs):
-        """
-        Add associated blog to form template so can display its title in HTML.
-        """
-        # Call the base implementation first to get a context
-        kwargs['comment'] = self.object.blogcomment_set.all()
+
         context = super(PostCommentCreate, self).get_context_data(**kwargs)
-        # Get the blog from id and add it to the context
         context['post'] = get_object_or_404(Post, pk=self.kwargs['pk'])
         return context
 
     def form_valid(self, form):
-        """
-        Add author and associated blog to form data before setting it as valid (so it is saved to model)
-        """
-        # Add logged-in user as author of comment
+
         form.instance.author = self.request.user
-        # Associate comment with blog based on passed id
         form.instance.post = get_object_or_404(Post, pk=self.kwargs['pk'])
-        # Call super-class form validation behaviour
+
         return super(PostCommentCreate, self).form_valid(form)
 
     def get_success_url(self):
-        """
-        After posting comment return to associated blog.
-        """
         return reverse('blog_post', kwargs={'pk': self.kwargs['pk'], })

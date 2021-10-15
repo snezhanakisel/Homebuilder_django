@@ -56,7 +56,7 @@ class Feedback(models.Model):
 
 
 class Mail(models.Model):
-    """ подписка по email"""
+
     email = models.EmailField()
     date = models.DateTimeField(auto_now_add=True)
 

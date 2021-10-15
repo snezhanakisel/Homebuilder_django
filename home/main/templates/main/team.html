@@ -63,7 +63,7 @@
         	<div class="col-lg-3 col-sm-6">
         		<div class="block-2 ftco-animate">
 	            <div class="flipper">
-	              <div class="front" style="background-image:{{ employee.image }};">
+	              <div class="front" style="background-image:{% static '/images/team-2.jpg' %};">
 	                <div class="box">
 	                  <h2>{{ employee.name }}</h2>
 	                  <p>{{ employee.position }}</p>
@@ -76,7 +76,7 @@
 	                </blockquote>
 	                <div class="author d-flex">
 	                  <div class="image align-self-center">
-	                    <img src="{{ employee.image. }}" alt="">
+						<img src="{% static 'images/team-2.jpg' %}" alt="">
 	                  </div>
 	                  <div class="name align-self-center ml-3">{{ employee.name }}<span class="position">{{ employee.position }}</span></div>
 	                </div>

@@ -11,7 +11,7 @@ class Post(models.Model):
     text = models.TextField('Содержание статьи')
     date = models.DateTimeField('Дата', default=timezone.now)
     author = models.ForeignKey(User, verbose_name='Автор', on_delete=models.CASCADE)
-    image = models.ImageField('Картинка', upload_to='blog/images')
+    image = models.ImageField('Картинка', upload_to='static/images')
 
     def get_absolute_url(self):
         return reverse('blog_post', kwargs={'pk': self.pk})
@@ -35,9 +35,7 @@ class Comment(models.Model):
         verbose_name_plural = 'Комментарии'
 
     def __str__(self):
-        """
-        String for representing the Model object.
-        """
+
         len_title = 75
         if len(self.message) > len_title:
             titlestring = self.message[:len_title] + '...'
